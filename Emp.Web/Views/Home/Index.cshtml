@@ -1,0 +1,58 @@
+﻿@using Emp.Data.Models
+@model List<Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+ 
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Manage <b>Employees</b></h2>
+    </div>
+    <div class="col-sm-4">
+        <a asp-controller="Home" asp-action="Create" class="btn btn-success add-new float-right">Create New</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Filter by name: <input type="text" name="filter" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Clear filter</a>
+        </p>
+    </div>
+</form>
+    </div>
+    <div class="col-sm-4">
+        
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>RFC</th>
+            <th>BordDate</th>
+            <th>Status</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.LastName</td>
+                <td>@emp.RFC</td>
+                <td>@emp.BornDate</td>
+                <td>@emp.Status</td>
+                <td>-</td>
+            </tr>
+        }
+    </tbody>
+</table>
